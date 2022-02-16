@@ -1,0 +1,15 @@
+.e-schedule .e-appointment-details{
+    padding: 0 !important;
+}
+.template-wrapper{
+    background-color: slateblue;
+    padding: 10px;
+    padding-left: 6px;
+    font-size: 14px;
+}
+.week-template-wrapper{
+    background-color: rgb(205, 90, 205);
+    padding: 10px;
+    padding-left: 6px;
+    font-size: 14px;
+}
