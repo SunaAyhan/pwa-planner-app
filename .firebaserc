@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "calendar-64fe3": {
+      "hosting": {
+        "planner-pwa": [
+          "calendar-64fe3"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "calendar-64fe3"
+  }
+}

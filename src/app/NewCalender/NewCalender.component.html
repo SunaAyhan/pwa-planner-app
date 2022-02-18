@@ -1,35 +1,48 @@
 <div class="container-fluid" id="bgimg" >
   <div class="row">
 		
-      <div id="card" class="card" >
-        <img class="card-img-top" src="/assets/takvim2.jpg"  id="takvim">
-        <div class="card-body">
-          <p class="card-text">Takvim name</p>
-        </div>
+      <div id="card" class="card" style="padding: 1rem;">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input class="form-control" name="name" ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="pass" class="form-label">Password</label>
+            <input type="password" class="form-control" name="pass" ngModel>
+          </div>
+          <button type="submit" class="btn btn-primary">New Calender</button>
+        </form>
+        
       </div>
+
+      <div id="card" class="card" style="padding: 1rem;">
+        <form #e="ngForm" (ngSubmit)="onSubmit2(e)" novalidate>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input class="form-control" name="name" ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="pass" class="form-label">Password</label>
+            <input type="password" class="form-control" name="pass" ngModel>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Existing Calender</button>
+        </form>
+        
+      </div>
+
+
      
+      <ng-template ngFor let-item [ngForOf]="myCalenders" let-i="index">
+        <a [routerLink]="['/callender', item.name]" id="card" class="card" >
+          <img class="card-img-top" src="/assets/takvim2.jpg"   id="takvim">
+          <div class="card-body">
+            <p class="card-text">{{item.name}}</p>
+          </div>
+        </a>
+      </ng-template>
+      
 	
-      <div id="card" class="card" >
-        <img class="card-img-top" src="/assets/takvim2.jpg"   id="takvim">
-        <div class="card-body">
-          <p class="card-text">Takvim name</p>
-        </div>
-      </div>
-	
-      <div id="card" class="card" >
-        <img class="card-img-top" src="/assets/takvim2.jpg"   id="takvim">
-        <div class="card-body">
-          <p class="card-text">Takvim name</p>
-        </div>
-      </div>
-	
-      <div id="card" class="card" >
-        <img class="card-img-top" src="/assets/takvim2.jpg"   id="takvim">
-        <div class="card-body">
-          <p class="card-text">Takvim name</p>
-        </div>
-     
-		</div>
 	</div>
 
 
