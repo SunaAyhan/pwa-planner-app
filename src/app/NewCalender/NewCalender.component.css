@@ -1,0 +1,17 @@
+#bgimg {
+    background-image: url('src/assets/bg.jpg');
+    height: 45rem;
+    margin: 0%;
+    
+    
+}
+#takvim{
+    width: 13rem;
+    height: 13rem;
+    
+}
+#card{
+    margin: 2rem;
+    width: 13rem;
+    padding: 0rem;
+}

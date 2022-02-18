@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NewCalenderComponent } from './NewCalender/NewCalender.component';
+import { HomePageComponent } from './HomePage/HomePage.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [			
+    AppComponent,
+      NewCalenderComponent,
+      HomePageComponent
+   ],
   imports: [
     ScheduleModule,
     BrowserModule,
