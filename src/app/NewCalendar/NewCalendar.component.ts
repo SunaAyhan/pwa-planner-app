@@ -66,7 +66,15 @@ export class NewCalendarComponent implements OnInit {
   delete(item: any) {
     let auth = 0;
     let authData = this.db.collection('auth').doc(item.id);
-    this.myCalendars.pop(item);
+    for( var i = 0; i < this.myCalendars.length; i++){ 
+    
+      if ( this.myCalendars[i] == item) { 
+  
+        this.myCalendars.splice(i, 1); 
+      }
+  
+  }
+  
     localStorage.setItem('myCalendars', JSON.stringify(this.myCalendars));
     authData.valueChanges().subscribe((data) => {
       let data2: any = data ? data : [];
