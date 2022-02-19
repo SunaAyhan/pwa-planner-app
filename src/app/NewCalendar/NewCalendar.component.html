@@ -1,61 +1,76 @@
-<div class="container-fluid" id="bgimg" >
+<div class="container-fluid" id="bgimg">
   <div class="row">
-    
-		
-      <div id="card2" class="card" style="padding: 1rem;">
-        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input class="form-control" name="name" ngModel>
-          </div>
-          <div class="mb-3">
-            <label for="pass" class="form-label">Password</label>
-            <input type="password" class="form-control" name="pass" ngModel>
-          </div>
-          <button type="submit" class="btn">New Calendar</button>
-        </form>
-      </div>
- 
-      <div id="card2" class="card" style="padding: 1rem;">
-        <form #e="ngForm" (ngSubmit)="onSubmit2(e)" novalidate>
-          <div class="mb-1">
-            <label for="name" class="form-label">Name</label>
-            <input class="form-control" name="name" ngModel>
-          </div>
-          <div class="mb-1">
-            <label for="id" class="form-label">id</label>
-            <input class="form-control" name="id" ngModel>
-          </div>
-          <div class="mb-1">
-            <label for="pass" class="form-label">Password</label>
-            <input type="password" class="form-control" name="pass" ngModel>
-          </div>
-          <button type="submit" class="btn">Add Existing Calendar</button>
-        </form>
-        
-      </div>
-
-
-     
-      <ng-template ngFor let-item [ngForOf]="myCalendars" let-i="index">
-        <div id="card" class="card" >
-          <img class="card-img-top" src="/assets/takvim2.jpg" id="takvim">
-          <div class="card-body">
-            <a class="btn btn-sm" [routerLink]="['/calendar', item.id]" id="name" >{{item.name}}</a>
-            <div class="row">
-              <div class="col">
-                <a class="btn btn-sm" (click)="delete(item)">Delete </a>
-              </div>
-              <div class="col">
-                <a class="btn btn-sm" id="cpy" (click)="getId(item,$event.target)">Get Id</a>
-              </div>
+    <ng-template #content let-modal>
+      <div class="row">
+        <div id="card2" class="card" style="padding: 1rem">
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input class="form-control" name="name" ngModel />
             </div>
+            <div class="mb-3">
+              <label for="pass" class="form-label">Password</label>
+              <input type="password" class="form-control" name="pass" ngModel />
+            </div>
+            <button id="button" style="margin-top: 3rem;" type="submit" class="btn">New Calendar</button>
+          </form>
+        </div>
+        <div id="card2" class="card" style="padding: 1rem;">
+          <form #e="ngForm" (ngSubmit)="onSubmit2(e)" novalidate>
+            <div class="mb-1">
+              <label for="name" class="form-label">Name</label>
+              <input class="form-control" name="name" ngModel>
+            </div>
+            <div class="mb-1">
+              <label for="id" class="form-label">id</label>
+              <input class="form-control" name="id" ngModel>
+            </div>
+            <div class="mb-1">
+              <label for="pass" class="form-label">Password</label>
+              <input type="password" class="form-control" name="pass" ngModel>
+            </div>
+            <button id="button"  type="submit" class="btn">Add Existing Calendar</button>
+          </form>
+        </div>
+      </div>
+    </ng-template>
+    <div id="card3" class="card" style="padding: 1rem">
+      <button id="button"  class="btn" (click)="open(content)">Add New Calendar</button>
+    </div>
+
+    <ng-template ngFor let-item [ngForOf]="myCalendars" let-i="index">
+      <div id="card" class="card">
+        <img class="card-img-top" src="/assets/takvim2.jpg" id="takvim" />
+        <div class="card-body">
+          <div class="row">
+            <div class="col">  <a
+            class="btn btn-sm"
+            [routerLink]="['/calendar', item.id]"
+            id="name"
+            >{{ item.name }}</a
+          ></div>
+          
+           
+          
+            <div class="col">
+              <a class="btn btn-sm" (click)="delete(item)">
+                <img src="/assets/delete.png" height="30rem" />
+              </a>
+            </div>
+           <button style="border-color: #ffa1a2;  padding: 0%;  " class="btn btn-light">  <a
+            style="color: #ffa1a2;"
+                class="btn btn-sm"
+                id="cpy"
+                (click)="getId(item, $event.target)"
+                >Get Id</a
+              >
+            </button>
+            
+          
+         
           </div>
         </div>
-      </ng-template>
-      
-	
-	</div>
-
-
+      </div>
+    </ng-template>
+  </div>
 </div>

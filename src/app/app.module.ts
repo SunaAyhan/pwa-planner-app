@@ -11,12 +11,15 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import {FormsModule} from '@angular/forms';
+import { ExistingCalendarComponent } from './ExistingCalendar/ExistingCalendar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
       NewCalendarComponent,
-      HomePageComponent
+      HomePageComponent,
+      ExistingCalendarComponent
    ],
   imports: [
     ScheduleModule,
@@ -31,7 +34,8 @@ import {FormsModule} from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
