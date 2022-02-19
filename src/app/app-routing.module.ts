@@ -6,7 +6,7 @@ import { NewCalenderComponent } from './NewCalender/NewCalender.component';
 const routes: Routes = [
   {path:'mycalenders' , component:NewCalenderComponent },
   {path:'callender/:id' , component:HomePageComponent},
-  {path:'home' , component:HomePageComponent}
+  {path:'home' , component:NewCalenderComponent}
 
 
   

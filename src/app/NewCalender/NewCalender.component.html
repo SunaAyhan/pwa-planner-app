@@ -1,7 +1,8 @@
 <div class="container-fluid" id="bgimg" >
   <div class="row">
+    
 		
-      <div id="card" class="card" style="padding: 1rem;">
+      <div id="card2" class="card" style="padding: 1rem;">
         <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
@@ -11,12 +12,11 @@
             <label for="pass" class="form-label">Password</label>
             <input type="password" class="form-control" name="pass" ngModel>
           </div>
-          <button type="submit" class="btn btn-primary">New Calender</button>
+          <button type="submit" class="btn">New Calendar</button>
         </form>
-        
       </div>
 
-      <div id="card" class="card" style="padding: 1rem;">
+      <div id="card2" class="card" style="padding: 1rem;">
         <form #e="ngForm" (ngSubmit)="onSubmit2(e)" novalidate>
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
@@ -26,7 +26,7 @@
             <label for="pass" class="form-label">Password</label>
             <input type="password" class="form-control" name="pass" ngModel>
           </div>
-          <button type="submit" class="btn btn-primary">Add Existing Calender</button>
+          <button type="submit" class="btn">Add Existing Calendar</button>
         </form>
         
       </div>
@@ -37,7 +37,7 @@
         <a [routerLink]="['/callender', item.name]" id="card" class="card" >
           <img class="card-img-top" src="/assets/takvim2.jpg"   id="takvim">
           <div class="card-body">
-            <p class="card-text">{{item.name}}</p>
+            <a id="name" >{{item.name}}</a>
           </div>
         </a>
       </ng-template>

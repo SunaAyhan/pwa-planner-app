@@ -1,16 +1,43 @@
 #bgimg {
     background-image: url('src/assets/bg.jpg');
-    height: 45rem;
+    
     margin: 0%;
+    
     
     
 }
 #takvim{
     width: 13rem;
     height: 13rem;
+    border: none;
     
 }
 #card{
+    margin: 2rem;
+    display: block;
+    width: 13rem;
+    padding: 0rem;
+}
+a:link{
+    text-decoration: none;
+    color: rgb(252, 92, 118);
+    text-align: center;
+    display: flex;
+    
+}
+button{
+    background-color: white;
+    border: none;
+    color: rgb(252, 92, 118);
+    min-height: 3.5rem;
+    min-width: 10rem;
+}
+form{
+    background-color: rgb(252, 92, 118);
+    color: white;
+}
+#card2{
+    background-color: rgb(252, 92, 118);
     margin: 2rem;
     width: 13rem;
     padding: 0rem;
