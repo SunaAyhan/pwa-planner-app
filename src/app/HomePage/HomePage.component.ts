@@ -43,18 +43,18 @@ export class HomePageComponent {
   };
   public ItemsAng!: AngularFirestoreCollection;
   public data!: AngularFirestoreCollection;
-  public schData = { id: "null", subject: "null", location: "null", description: "null", startTime: "null", endTime: "null"};
+  public schData = {guid:"1", id: "null", subject: "null", location: "null", description: "null", startTime: "null", endTime: "null"};
 
   public categoryDataSource: any;
   constructor(db: AngularFirestore,private route: ActivatedRoute,private router: Router ) {
     this.collectionName = this.route.snapshot.paramMap.get('id');
 
-    let callenders = localStorage.getItem('myCalenders')? JSON.parse(localStorage.getItem('myCalenders')!):[];
+    let callenders = localStorage.getItem('myCalendars')? JSON.parse(localStorage.getItem('myCalendars')!):[];
     let authData = db.collection("auth").doc(this.collectionName);
     authData.valueChanges().subscribe(data => {
       let data2:any = data? data:[]
       if(data2.pass==callenders.filter((item: any) => {
-        return item.name.includes(this.collectionName);
+        return item.id.includes(this.collectionName);
       })[0].pass){
         this.auth=1;
       }else this.auth=0;
@@ -72,20 +72,20 @@ export class HomePageComponent {
         for (let i = 0; i < length; i++) {
           let endTime = this.eventData[i].endTime.seconds.toString() + "000";
           let srtTime = this.eventData[i].startTime.seconds.toString() + "000";
-          let itemTmp={id: "null", subject: "null", location: "null", description: "null", startTime: "null", endTime: "null"}
+          let itemTmp={guid:"1",id: "null", subject: "null", location: "null", description: "null", startTime: "null", endTime: "null"}
           this.items.push(itemTmp)
           this.items[i].StartTime = new Date(parseInt(srtTime));
           this.items[i].EndTime = new Date(parseInt(endTime));
           this.items[i].Subject = this.eventData[i].subject;
           this.items[i].Id = this.eventData[i].id;
-          console.log(this.items)
+          this.items[i].Description = this.eventData[i].description;
+          this.items[i].guid = this.eventData[i].guid;
         }
         this.eventSettings= {
           dataSource: this.items,
           fields: {
             id: 'Id',
             subject: { name: 'Subject', title: 'Event Name' },
-            location: { name: 'Location', title: 'Event Location' },
             description: { name: 'Description', title: 'Event Description' },
             startTime: { name: 'StartTime', title: 'Start Duration' },
             endTime: { name: 'EndTime', title: 'End Duration' },
@@ -93,7 +93,7 @@ export class HomePageComponent {
         };
       })
     }else{
-      this.router.navigate(['/mycalenders']);
+      this.router.navigate(['/mycalendars']);
     }
     })
     
@@ -101,11 +101,10 @@ export class HomePageComponent {
   public onActionBegin(args: any): void {
     if(this.auth==1){
       if (args.requestType == "eventChange") {
-        this.data.doc(args.changedRecords[0].DocumentId).update({ Subject: args.changedRecords[0].Subject });
-        this.data.doc(args.changedRecords[0].DocumentId).update({ EndTime: args.changedRecords[0].EndTime });
-        this.data.doc(args.changedRecords[0].DocumentId).update({ StartTime: args.changedRecords[0].StartTime });
-        this.data.doc(args.changedRecords[0].DocumentId).update({ IsAllDay: args.changedRecords[0].IsAllDay });
-        this.data.doc(args.changedRecords[0].DocumentId).update({ ConferenceId: args.changedRecords[0].ConferenceId });
+        this.data.doc(args.changedRecords[0].guid).update({ subject: args.changedRecords[0].Subject });
+        this.data.doc(args.changedRecords[0].guid).update({ endTime: args.changedRecords[0].EndTime });
+        this.data.doc(args.changedRecords[0].guid).update({ startTime: args.changedRecords[0].StartTime });
+        this.data.doc(args.changedRecords[0].guid).update({ description: args.changedRecords[0].Description });
       } else if (args.requestType == "eventCreate") {
         let guid = (this.GuidFun() + this.GuidFun() + "-" + this.GuidFun() + "-4" + this.GuidFun().substr(0, 3) + "-" + this.GuidFun() + "-" + this.GuidFun() + this.GuidFun() + this.GuidFun()).toLowerCase();
         console.log(guid)
@@ -115,10 +114,13 @@ export class HomePageComponent {
         this.schData.startTime = args.data[0].StartTime;
         this.schData.endTime = args.data[0].EndTime;
         this.schData.id = args.data[0].Id;
+        this.schData.description = args.data[0].Description?args.data[0].Description:"null";
+        this.schData.guid = guid;
         console.log(this.schData)
         this.data.doc(guid).set(this.schData);
       } else if (args.requestType == "eventRemove") {
-        this.data.doc(args.deletedRecords[0].DocumentId).delete();
+        console.log(args.deletedRecords[0].guid)
+        this.data.doc(args.deletedRecords[0].guid).delete();
       }
     }
   }

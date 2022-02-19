@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { NewCalenderComponent } from './NewCalender/NewCalender.component';
+import { NewCalendarComponent } from './NewCalendar/NewCalendar.component';
 import { HomePageComponent } from './HomePage/HomePage.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -15,7 +15,7 @@ import {FormsModule} from '@angular/forms';
 @NgModule({
   declarations: [			
     AppComponent,
-      NewCalenderComponent,
+      NewCalendarComponent,
       HomePageComponent
    ],
   imports: [

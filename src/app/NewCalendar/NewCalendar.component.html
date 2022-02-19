@@ -15,14 +15,18 @@
           <button type="submit" class="btn">New Calendar</button>
         </form>
       </div>
-
+ 
       <div id="card2" class="card" style="padding: 1rem;">
         <form #e="ngForm" (ngSubmit)="onSubmit2(e)" novalidate>
-          <div class="mb-3">
+          <div class="mb-1">
             <label for="name" class="form-label">Name</label>
             <input class="form-control" name="name" ngModel>
           </div>
-          <div class="mb-3">
+          <div class="mb-1">
+            <label for="id" class="form-label">id</label>
+            <input class="form-control" name="id" ngModel>
+          </div>
+          <div class="mb-1">
             <label for="pass" class="form-label">Password</label>
             <input type="password" class="form-control" name="pass" ngModel>
           </div>
@@ -33,13 +37,21 @@
 
 
      
-      <ng-template ngFor let-item [ngForOf]="myCalenders" let-i="index">
-        <a [routerLink]="['/callender', item.name]" id="card" class="card" >
-          <img class="card-img-top" src="/assets/takvim2.jpg"   id="takvim">
+      <ng-template ngFor let-item [ngForOf]="myCalendars" let-i="index">
+        <div id="card" class="card" >
+          <img class="card-img-top" src="/assets/takvim2.jpg" id="takvim">
           <div class="card-body">
-            <a id="name" >{{item.name}}</a>
+            <a class="btn btn-sm" [routerLink]="['/calendar', item.id]" id="name" >{{item.name}}</a>
+            <div class="row">
+              <div class="col">
+                <a class="btn btn-sm" (click)="delete(item)">Delete </a>
+              </div>
+              <div class="col">
+                <a class="btn btn-sm" id="cpy" (click)="getId(item,$event.target)">Get Id</a>
+              </div>
+            </div>
           </div>
-        </a>
+        </div>
       </ng-template>
       
 	
