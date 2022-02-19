@@ -12,7 +12,7 @@
               <label for="pass" class="form-label">Password</label>
               <input type="password" class="form-control" name="pass" ngModel />
             </div>
-            <button id="button" style="margin-top: 3rem;" type="submit" class="btn">New Calendar</button>
+            <button id="button" style="margin-top: 3rem;" (click)="modal.close('Ok click')" type="submit" class="btn">New Calendar</button>
           </form>
         </div>
         <div id="card2" class="card" style="padding: 1rem;">
@@ -29,7 +29,7 @@
               <label for="pass" class="form-label">Password</label>
               <input type="password" class="form-control" name="pass" ngModel>
             </div>
-            <button id="button"  type="submit" class="btn">Add Existing Calendar</button>
+            <button id="button"  type="submit" (click)="modal.close('Ok click')" class="btn">Add Existing Calendar</button>
           </form>
         </div>
       </div>
