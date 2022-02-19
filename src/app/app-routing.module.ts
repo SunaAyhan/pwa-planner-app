@@ -5,6 +5,7 @@ import { HomePageComponent } from './HomePage/HomePage.component';
 import { NewCalendarComponent } from './NewCalendar/NewCalendar.component';
 
 const routes: Routes = [
+  {path:'' , component:NewCalendarComponent },
   {path:'mycalendars' , component:NewCalendarComponent },
   {path:'calendar/:id' , component:HomePageComponent},
   {path:'home' , component:NewCalendarComponent},
