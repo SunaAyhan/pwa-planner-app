@@ -1,6 +1,8 @@
 # PlannerPwa
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.12.
+# Project Video
+https://www.linkedin.com/posts/suna-ayhan-184209190_merhaba-s%C3%B6mestr-tatilinde-zaman%C4%B1m%C4%B1-de%C4%9Ferlendirmek-activity-6901104562812637184-5DlG?utm_source=share&utm_medium=member_desktop
 
 ## Development server
 
